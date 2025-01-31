@@ -1,5 +1,5 @@
 {
-    "name": "julio101290/boilerplatecomplementopago",
+    "name": "julio101290/boilerplatecartaporte",
     "description": "library to generate payment complement CFDI 4.0",
     "keywords": [
         "codeigniter4",
@@ -43,7 +43,7 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "julio101290\\boilerplatecomplementopago\\": "src"
+            "julio101290\\boilerplatecartaporte\\": "src"
         }
     },
     "autoload-dev": {
