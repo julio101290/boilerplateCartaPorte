@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Models;
+namespace julio101290\boilerplatecartaporte\Models;
+
 
 use CodeIgniter\Model;
 

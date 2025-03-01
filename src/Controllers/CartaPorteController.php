@@ -1,34 +1,32 @@
 <?php
 
-namespace App\Controllers;
+namespace julio101290\boilerplatecartaporte\Controllers;
 
 use App\Controllers\BaseController;
-use App\Database\Migrations\Storages;
-use App\Models\ProductsModel;
+use julio101290\boilerplateproducts\Models\ProductsModel;
 use \App\Models\UserModel;
-use App\Models\LogModel;
-use App\Models\QuotesModel;
-use App\Models\SellsModel;
-use App\Models\CompaniesModel;
-use App\Models\StoragesModel;
-use App\Models\SellsDetailsModel;
+use julio101290\boilerplatelog\Models\LogModel;
+use julio101290\boilerplatequotes\Models\QuotesModel;
+use julio101290\boilerplatesells\Models\SellsModel;
+use julio101290\boilerplatecompanies\Models\EmpresasModel;
+use julio101290\boilerplatestorages\Models\StoragesModel;
+use julio101290\boilerplatesells\Models\SellsDetailsModel;
 use CodeIgniter\API\ResponseTrait;
-use App\Models\EmpresasModel;
-use App\Models\CustumersModel;
-use App\Models\PaymentsModel;
-use App\Models\Comprobantes_rdModel;
-use App\Models\VehiculosModel;
-use App\Models\ChoferesModel;
-use App\Models\TipovehiculoModel;
-use App\Models\BranchofficesModel;
-use App\Models\ArqueoCajaModel;
-use App\Models\SaldosModel;
-use App\Models\EnlacexmlModel;
-use App\Models\CartaPorteModel;
-use App\Models\CartaPorteDetailsModel;
-use App\Models\MercanciascartaporteModel;
-use App\Models\UbicacionesModel;
-use App\Models\RemolquesModel;
+use julio101290\boilerplatecustumers\Models\CustumersModel;
+use julio101290\boilerplatesells\Models\PaymentsModel;
+use julio101290\boilerplatecomprobanterd\Models\Comprobantes_rdModel;
+use julio101290\boilerplatevehicles\Models\VehiculosModel;
+use julio101290\boilerplatedrivers\Models\ChoferesModel;
+use julio101290\boilerplatevehicles\Models\TipovehiculoModel;
+use julio101290\boilerplatebranchoffice\Models\BranchofficesModel;
+use julio101290\boilerplatecashtonnage\Models\ArqueoCajaModel;
+use julio101290\boilerplateinventory\Models\SaldosModel;
+use julio101290\boilerplatesells\Models\EnlacexmlModel;
+use julio101290\boilerplatecartaporte\Models\CartaPorteModel;
+use julio101290\boilerplatecartaporte\Models\CartaPorteDetailsModel;
+use julio101290\boilerplatecartaporte\Models\MercanciascartaporteModel;
+use julio101290\boilerplatelocations\Models\UbicacionesModel;
+use julio101290\boilerplateremolques\Models\RemolquesModel;
 
 class CartaPorteController extends BaseController {
 
@@ -126,7 +124,7 @@ class CartaPorteController extends BaseController {
         $titulos["listaSubtitle"] = "Muestra la lista de carta porte";
 
         //$data["data"] = $datos;
-        return view('cartasPorte', $titulos);
+        return view('julio101290\boilerplatecartaporte\Views\cartasPorte', $titulos);
     }
 
     public function cartaPorteFilters($desdeFecha, $hastaFecha, $todas, $empresa, $sucursal, $cliente) {
