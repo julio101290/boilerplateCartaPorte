@@ -1,5 +1,5 @@
-<?= $this->include('load/daterangapicker') ?>
-<?= $this->include('load/toggle') ?>
+<?= $this->include('julio101290\boilerplate\Views\load/daterangapicker') ?>
+<?= $this->include('julio101290\boilerplate\Views\load/toggle') ?>
 <?= $this->include('julio101290\boilerplate\Views\load\datatables') ?>
 <?= $this->include('julio101290\boilerplate\Views\load\select2') ?>
 
@@ -11,12 +11,12 @@
 <!-- Section content -->
 <?= $this->section('content') ?>
 
-<?= $this->include('modulesSells/modaSendMail') ?>
+<?= $this->include('julio101290\boilerplatecartaporte\Views\modulesCartaPorte/modaSendMail') ?>
 
-<?= $this->include('modulesSells/paymentsList') ?>
-<?= $this->include('modulesSells/modalPaymentList') ?>
-<?= $this->include('modulesSells/listaFacturas') ?>
-<?= $this->include('modulesSells/xmlList') ?>
+<?= $this->include('julio101290\boilerplatecartaporte\Views\modulesCartaPorte/paymentsList') ?>
+<?= $this->include('julio101290\boilerplatecartaporte\Views\modulesCartaPorte/modalPaymentList') ?>
+<?= $this->include('julio101290\boilerplatecartaporte\Views\modulesCartaPorte/listaFacturas') ?>
+<?= $this->include('julio101290\boilerplatecartaporte\Views\modulesCartaPorte/xmlList') ?>
 
 
 <!-- SELECT2 EXAMPLE -->

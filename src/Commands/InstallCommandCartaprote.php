@@ -1,6 +1,6 @@
 <?php
 
-namespace julio101290\boilerplatecomplementopago\Commands;
+namespace julio101290\boilerplatecartaporte\Commands;
 
 use CodeIgniter\CLI\BaseCommand;
 use Config\Database;
@@ -10,7 +10,7 @@ use CodeIgniter\CLI\CLI;
 /**
  * Class InstallCommand.
  */
-class InstallCommandComplementoPago extends BaseCommand
+class InstallCommandCartaprote extends BaseCommand
 {
     /**
      * The group the command is lumped under
@@ -18,28 +18,28 @@ class InstallCommandComplementoPago extends BaseCommand
      *
      * @var string
      */
-    protected $group = 'boilerplatecomplementopago';
+    protected $group = 'boilerplatecartaporte';
 
     /**
      * The command's name.
      *
      * @var string
      */
-    protected $name = 'boilerplatecomplementopago:installcomplementopago';
+    protected $name = 'boilerplatecartaporte:installcartaporte';
 
     /**
      * The command's short description.
      *
      * @var string
      */
-    protected $description = 'Db install for basic boilerplate sells data.';
+    protected $description = 'Db install for basic boilerplate letter port data.';
 
     /**
      * The command's usage.
      *
      * @var string
      */
-    protected $usage = 'boilerplatecomplementopago:installcomplementopago';
+    protected $usage = 'boilerplatecartaporte:installcartaporte';
 
     /**
      * The commamd's argument.
