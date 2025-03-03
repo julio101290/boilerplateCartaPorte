@@ -1,4 +1,4 @@
-<?= $this->include('load/toggle') ?>
+<?= $this->include('julio101290\boilerplate\Views\load/toggle') ?>
 <?= $this->include('julio101290\boilerplate\Views\load\select2') ?>
 <?= $this->include('julio101290\boilerplate\Views\load\datatables') ?>
 <?= $this->include('julio101290\boilerplate\Views\load\nestable') ?>
@@ -8,17 +8,17 @@
 <!-- Section content -->
 <?= $this->section('content') ?>
 
-<?= $this->include('modulesCartaPorte/dataHeadCartaPorte') ?>
-<?= $this->include('modulesCartaPorte/productosModalCartaPorte') ?>
-<?= $this->include('modulesCartaPorte/mercanciasModalCartaPorte') ?>
-<?= $this->include('modulesCartaPorte/modalCaptureUbicaciones') ?>
-<?= $this->include('modulesCartaPorte/modalPayment') ?>
-<?= $this->include('modulesCartaPorte/moreInfoRow') ?>
-<?= $this->include('modulesCartaPorte/moreInfoRowMercancias') ?>
-<?= $this->include('modulesProducts/modalCaptureProducts') ?>
-<?= $this->include('modulesCustumers/modalCaptureCustumers') ?>
-<?= $this->include('modulesChoferes/modalCaptureChoferes') ?>
-<?= $this->include('modulesVehiculos/modalCaptureVehiculos') ?>
-<?= $this->include('modulesRemolques/modalCaptureRemolques') ?>
+<?= $this->include('julio101290\boilerplatecartaporte\Views\modulesCartaPorte/dataHeadCartaPorte') ?>
+<?= $this->include('julio101290\boilerplatecartaporte\Views\modulesCartaPorte/productosModalCartaPorte') ?>
+<?= $this->include('julio101290\boilerplatecartaporte\Views\modulesCartaPorte/mercanciasModalCartaPorte') ?>
+<?= $this->include('julio101290\boilerplatecartaporte\Views\modulesCartaPorte/modalCaptureUbicaciones') ?>
+<?= $this->include('julio101290\boilerplatecartaporte\Views\modulesCartaPorte/modalPayment') ?>
+<?= $this->include('julio101290\boilerplatecartaporte\Views\modulesCartaPorte/moreInfoRow') ?>
+<?= $this->include('julio101290\boilerplatecartaporte\Views\modulesCartaPorte/moreInfoRowMercancias') ?>
+<?= $this->include('julio101290\boilerplateproducts\Views\modulesProducts/modalCaptureProducts') ?>
+<?= $this->include('julio101290\boilerplatecustumers\Views\modulesCustumers/modalCaptureCustumers') ?>
+<?= $this->include('julio101290\boilerplatedrivers\Views\modulesChoferes/modalCaptureChoferes') ?>
+<?= $this->include('julio101290\boilerplatevehicles\Views\modulesVehiculos/modalCaptureVehiculos') ?>
+<?= $this->include('julio101290\boilerplateremolques\Views\modulesRemolques/modalCaptureRemolques') ?>
 
 <?= $this->endSection() ?>

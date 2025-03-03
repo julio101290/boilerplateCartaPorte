@@ -363,7 +363,7 @@ class CartaPorteController extends BaseController {
         $titulos["subtitle"] = "Captura de Carta Porte"; // lang('registerNew.subtitle');
         $titulos["tiposVehiculo"] = $tiposVehiculo;
 
-        return view('newCartaPorte', $titulos);
+        return view('julio101290\boilerplatecartaporte\Views\newCartaPorte', $titulos);
     }
 
     public function reportSellsProducts() {
@@ -806,7 +806,7 @@ class CartaPorteController extends BaseController {
         $titulos["title"] = "Editar Venta";
         $titulos["subtitle"] = "Edición de Ventas";
 
-        return view('newCartaPorte', $titulos);
+        return view('julio101290\boilerplatecartaporte\Views\newCartaPorte', $titulos);
     }
 
     /*

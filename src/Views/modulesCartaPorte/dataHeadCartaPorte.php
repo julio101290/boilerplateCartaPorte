@@ -47,26 +47,26 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="generales" role="tabpanel" aria-labelledby="generales">
 
-                        <?= $this->include('modulesCartaPorte/generalCartaPorte') ?>
+                        <?= $this->include('julio101290\boilerplatecartaporte\Views\modulesCartaPorte/generalCartaPorte') ?>
 
                     </div>
 
                     <div class="tab-pane fade" id="otrosDatos" role="tabpanel" aria-labelledby="otrosDatos">
 
-                        <?= $this->include('modulesCartaPorte/otrosDatos') ?>
+                        <?= $this->include('julio101290\boilerplatecartaporte\Views\modulesCartaPorte/otrosDatos') ?>
 
                     </div>
 
                     <div class="tab-pane fade" id="datosExtraVehiculo" role="tabpanel" aria-labelledby="datosExtraVehiculo">
 
-                        <?= $this->include('modulesCartaPorte/datosExtrasVehiculos') ?>
+                        <?= $this->include('julio101290\boilerplatecartaporte\Views\modulesCartaPorte/datosExtrasVehiculos') ?>
 
                     </div>
 
 
                     <div class="tab-pane fade" id="facturacionMX" role="tabpanel" aria-labelledby="otrosDatos">
 
-                        <?= $this->include('modulesCartaPorte/facturacionMX') ?>
+                        <?= $this->include('julio101290\boilerplatecartaporte\Views\modulesCartaPorte/facturacionMX') ?>
 
                     </div>
 
