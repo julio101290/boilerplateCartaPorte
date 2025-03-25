@@ -4,8 +4,22 @@
 
 
 
-## CodeIgniter 4 Boilerplate Carta POrte
+## CodeIgniter 4 Boilerplate Carta Porte
 library to generate carta porte complement CFDI 4.0
+
+## CodeIgniter 4 What is Carta Porte
+The "Carta Porte" is a digital fiscal document used in Mexico to support the transportation of goods and merchandise within the national territory. Its main function is to accredit the legal possession of the merchandise during its transport, as well as to provide detailed information about its origin and destination.
+
+Here are some key points about the Carta Porte:
+
+Digital fiscal document: It is an electronic tax receipt (CFDI) to which the Carta Porte complement is incorporated.
+Supports the transport of goods: It accredits the legal stay and/or possession of goods or merchandise during their transport within the national territory.
+Identifies the origin and destination: It provides detailed information about the place from which the goods originate and where they are going.
+Combats smuggling: It helps to prevent smuggling and unfair competition among transport companies.
+Facilitates traceability: It allows tracking the merchandise throughout its journey.
+Transport contract: It functions as a legal contract between the sender, the carrier, and the recipient, establishing the terms and conditions of transport.
+In summary, the Carta Porte is an essential document for the transport of goods in Mexico, as it guarantees the legality, security, and traceability of goods during their transport.
+
 
 ## Requirements
 * PhpCfdi\SatCatalogos
