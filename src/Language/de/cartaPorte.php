@@ -31,6 +31,8 @@ $cartaPorte["fields"]["pesoBrutoVehicularCartaPorte"] = "Fahrzeug-Bruttogewicht"
 $cartaPorte["fields"]["anioModeloCartaPorte"] = "Modelljahr";
 $cartaPorte["fields"]["aseguraRespCivilCartaPorte"] = "Haftpflichtversicherung";
 $cartaPorte["fields"]["polizaRespCivilCartaPorte"] = "Haftpflichtpolice";
+$cartaPorte["fields"]["AseguraMedAmbiente"] = "Umweltversicherungsgesellschaft";
+$cartaPorte["fields"]["PolizaMedAmbiente"] = "Umweltpolitik";
 
 $cartaPorte["fields"]["placaVehiculoCartaPorte"] = "Kennzeichen";
 

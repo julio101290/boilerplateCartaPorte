@@ -2,7 +2,6 @@
 
 namespace julio101290\boilerplatecartaporte\Models;
 
-
 use CodeIgniter\Model;
 
 class CartaPorteModel extends Model {
@@ -106,6 +105,8 @@ class CartaPorteModel extends Model {
         'numExteriorDestino',
         'apellidoFigura',
         'remolqueCartaPorte',
+        'AseguraMedAmbiente',
+        'PolizaMedAmbiente',
         'UUID'
     ];
     protected $useTimestamps = true;
@@ -167,6 +168,8 @@ class CartaPorteModel extends Model {
                     ,a.numExteriorDestino
                     ,a.apellidoFigura
                     ,a.remolqueCartaPorte
+                    ,a.AseguraMedAmbiente
+                    ,a.PolizaMedAmbiente
                     
                     ,a.deleted_at')
                 ->where('a.idEmpresa', 'c.id', FALSE)
@@ -277,6 +280,9 @@ class CartaPorteModel extends Model {
                     ,a.apellidoFigura
                     ,a.remolqueCartaPorte
                     
+                    ,a.AseguraMedAmbiente
+                    ,a.PolizaMedAmbiente
+                    
                     ,a.created_at
                     ,a.updated_at
                     ,a.deleted_at')
@@ -288,15 +294,15 @@ class CartaPorteModel extends Model {
                 ->orWhere('a.balance>', '0')
                 ->groupEnd()
                 ->groupStart()
-                ->where('\'0\'', $empresa,true)
+                ->where('\'0\'', $empresa, true)
                 ->orWhere('a.idEmpresa', $empresa)
                 ->groupEnd()
                 ->groupStart()
-                ->where('\'0\'', $sucursal,true)
+                ->where('\'0\'', $sucursal, true)
                 ->orWhere('a.idSucursal', $sucursal)
                 ->groupEnd()
                 ->groupStart()
-                ->where('\'0\'', $cliente,true)
+                ->where('\'0\'', $cliente, true)
                 ->orWhere('a.idCustumer', $cliente)
                 ->groupEnd()
                 ->whereIn('a.idEmpresa', $empresas);
@@ -402,6 +408,8 @@ class CartaPorteModel extends Model {
             ,a.numExteriorDestino
             ,a.apellidoFigura
             ,a.remolqueCartaPorte
+            ,a.AseguraMedAmbiente
+            ,a.PolizaMedAmbiente
             
             ,a.created_at
             ,a.updated_at,

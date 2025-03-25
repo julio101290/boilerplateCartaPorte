@@ -168,6 +168,10 @@
         renglon = renglon + "<input type=\"hidden\" id=\"unidadMercanciaR\" class=\"form-control unidadMercanciaR\"  name=\"unidadMercanciaR\" value=\"" + unidad + "\" required=\"\">";
         renglon = renglon + "<input type=\"hidden\" id=\"pesoEnKgR\" class=\"form-control pesoEnKgR\"  name=\"pesoEnKgR\" value=\"" + pesoEnKg + "\" required=\"\">";
         renglon = renglon + "<input type=\"hidden\" id=\"materialPeligrosoR\" class=\"form-control materialPeligrosoR\"  name=\"materialPeligrosoR\" value=\"" + materialPeligroso + "\" required=\"\">";
+        renglon = renglon + "<input type=\"hidden\" id=\"claveProductoSATMaterialPeligrosoR\" class=\"form-control claveProductoSATMaterialPeligrosoR\"  name=\"claveProductoSATMaterialPeligrosoR\" value=\"\" required=\"\">";
+        renglon = renglon + "<input type=\"hidden\" id=\"claveProductoSATMaterialPeligrosoDescripcionR\" class=\"form-control claveProductoSATMaterialPeligrosoDescripcionR\"  name=\"claveProductoSATMaterialPeligrosoDescripcionR\" value=\"\" required=\"\">";
+        renglon = renglon + "<input type=\"hidden\" id=\"claveTipoEmbalajeR\" class=\"form-control claveTipoEmbalajeR\"  name=\"claveTipoEmbalajeR\" value=\"\" required=\"\">";
+        renglon = renglon + "<input type=\"hidden\" id=\"descripcionEmbalajeR\" class=\"form-control descripcionEmbalajeR\"  name=\"descripcionEmbalajeR\" value=\"\" required=\"\">";
         renglon = renglon + "<input type=\"hidden\" id=\"idDestinoMercanciaR\" class=\"form-control idDestinoMercanciaR\"  name=\"idDestinoMercanciaR\" value=\"\" required=\"\">";
         renglon = renglon + "<input type=\"hidden\" id=\"idOrigenMercanciaR\" class=\"form-control idOrigenMercanciaR\"  name=\"idOrigenMercanciaR\" value=\"\" required=\"\">";
         renglon = renglon + "<input type=\"text\" id=\"codeProductMercanciaR\" class=\"form-control codeProductMercanciaR\"  name=\"codeProductMercanciaR\" value=\"" + codeProduct + "\" required=\"\"> </div>";
@@ -215,6 +219,10 @@
         var idDestinoMercancia = $(this).parent().parent().find(".idDestinoMercanciaR").val();
         var idOrigenMercancia = $(this).parent().parent().find(".idOrigenMercanciaR").val();
         var materialPeligroso = $(this).parent().parent().find(".materialPeligrosoR").val();
+        var materialPeligrosoDescripcion = $(this).parent().parent().find(".claveProductoSATMaterialPeligrosoDescripcionR").val();
+        var tipoEmbalaje = $(this).parent().parent().find(".claveTipoEmbalajeR").val();
+        var descripcionEmbalaje = $(this).parent().parent().find(".descripcionEmbalajeR").val();
+
 
         var newOption = new Option(unidadSAT, unidadSAT, true, true);
         $('#unidadSATRowMercancia').append(newOption).trigger('change');
@@ -230,9 +238,22 @@
 
         $("#pesoEnKG").val(pesoEnKG);
         $("#materialPeligroso").val(materialPeligroso);
-        
+
         $("#idOrigenMercancia").val(idOrigenMercancia);
         $("#idDestinoMercancia").val(idDestinoMercancia);
+
+        /**
+         * Clave y nombre del material peligroso
+         */
+
+        var newOptionClaveMaterialPeligroso = new Option(materialPeligrosoDescripcion, materialPeligroso, true, true);
+        $('#claveProductoSATMaterialPeligroso').append(newOptionClaveMaterialPeligroso).trigger('change');
+        $("#claveProductoSATMaterialPeligroso").val(materialPeligroso);
+        $("#claveProductoSATMaterialPeligroso").trigger("change");
+
+        $("#claveTipoEmbalaje").val(tipoEmbalaje).trigger("change");
+        
+        $("#descripcionEmbalaje").val(descripcionEmbalaje)
 
 
     });

@@ -175,14 +175,42 @@
             </div>
         </div>
 
+
         <div class="form-group row">
-            <label for="polizaRespCivilCartaPorte" class="col-sm-2 col-form-label"><?= lang('cartaPorte.fields.placaVehiculoCartaPorte') ?></label>
+            <label for="placaVehiculoCartaPorte" class="col-sm-2 col-form-label"><?= lang('cartaPorte.fields.placaVehiculoCartaPorte') ?></label>
             <div class="col-sm-10">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
                     </div>
-                    <input type="text" name="placaVehiculoCartaPorte" id="placaVehiculoCartaPorte" class="form-control datosVehiculos <?= session('error.placaVehiculoCartaPorte') ? 'is-invalid' : '' ?>" value="<?= $PlacaVM ?>" placaVehiculoCartaPorte" placeholder="<?= lang('cartaPorte.fields.placaVehiculoCartaPorte') ?>" autocomplete="off">
+                    <input type="text" name="placaVehiculoCartaPorte" id="placaVehiculoCartaPorte" class="form-control datosVehiculos <?= session('error.PlacaVM') ? 'is-invalid' : '' ?>" value="<?= $PlacaVM ?>" placaVehiculoCartaPorte" placeholder="<?= lang('cartaPorte.fields.placaVehiculoCartaPorte') ?>" autocomplete="off">
+                </div>
+            </div>
+        </div>
+
+        
+        
+                <div class="form-group row">
+            <label for="polizaRespCivilCartaPorte" class="col-sm-2 col-form-label"><?= lang('cartaPorte.fields.AseguraMedAmbiente') ?></label>
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
+                    </div>
+                    <input type="text" name="AseguraMedAmbiente" id="AseguraMedAmbiente" class="form-control datosVehiculos <?= session('error.AseguraMedAmbiente') ? 'is-invalid' : '' ?>" value="<?= $AseguraMedAmbiente ?>" AseguraMedAmbiente" placeholder="<?= lang('cartaPorte.fields.AseguraMedAmbiente') ?>" autocomplete="off">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label for="PolizaMedAmbiente" class="col-sm-2 col-form-label"><?= lang('cartaPorte.fields.PolizaMedAmbiente') ?></label>
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
+                    </div>
+                    <input type="text" name="PolizaMedAmbiente" id="PolizaMedAmbiente" class="form-control datosVehiculos <?= session('error.PolizaMedAmbiente') ? 'is-invalid' : '' ?>" value="<?= $PolizaMedAmbiente ?>" PolizaMedAmbiente" placeholder="<?= lang('cartaPorte.fields.PolizaMedAmbiente') ?>" autocomplete="off">
                 </div>
             </div>
         </div>

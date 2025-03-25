@@ -11,7 +11,22 @@ class MercanciascartaporteModel extends Model {
     protected $useAutoIncrement = true;
     protected $returnType = 'array';
     protected $useSoftDeletes = true;
-    protected $allowedFields = ['id', 'idCartaPorte', 'bienesTransp', 'descripcion', 'cantidad', 'claveUnidad', 'unidad', 'materialPeligroso', 'pesoEnKg', 'cantidadTransporta', 'IDOrigenMercancia', 'IDDestinoMercancia', 'created_at', 'updated_at', 'deleted_at'];
+    protected $allowedFields = ['id'
+        , 'idCartaPorte'
+        , 'bienesTransp'
+        , 'descripcion'
+        , 'cantidad'
+        , 'claveUnidad'
+        , 'unidad'
+        , 'materialPeligroso'
+        , 'pesoEnKg'
+        , 'cantidadTransporta'
+        , 'IDOrigenMercancia'
+        , 'IDDestinoMercancia'
+        , 'claveMaterialPeligroso'
+        , 'created_at'
+        , 'updated_at'
+        , 'deleted_at'];
     protected $useTimestamps = true;
     protected $createdField = 'created_at';
     protected $deletedField = 'deleted_at';

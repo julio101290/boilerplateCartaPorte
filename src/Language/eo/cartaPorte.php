@@ -31,6 +31,8 @@ $cartaPorte["fields"]["pesoBrutoVehicularCartaPorte"] = "Malneta Veturila Pezo";
 $cartaPorte["fields"]["anioModeloCartaPorte"] = "Modela Jaro";
 $cartaPorte["fields"]["aseguraRespCivilCartaPorte"] = "Civilrespondeca Asekuro";
 $cartaPorte["fields"]["polizaRespCivilCartaPorte"] = "Civilrespondeca Poliso";
+$cartaPorte["fields"]["AseguraMedAmbiente"] = "Media Asekura Kompanio";
+$cartaPorte["fields"]["PolizaMedAmbiente"] = "Medipolitiko";
 
 $cartaPorte["fields"]["placaVehiculoCartaPorte"] = "Numerplato";
 

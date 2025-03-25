@@ -24,6 +24,7 @@ $cartaPorte["estadoDestino"] = "Estado Destino";
 $cartaPorte["paisDestino"] = "Pais Destino";
 $cartaPorte["codigoPostalDestino"] = "Codigo Postal Destino";
 
+
 $cartaPorte["fields"]["permisoSCTCartaPorte"] = "Permiso SCT";
 $cartaPorte["fields"]["numPermisoSCTCartaPorte"] = "Num. Permiso SCT";
 $cartaPorte["fields"]["configVehicularCartaPorte"] = "Config Vehicular";
@@ -31,6 +32,9 @@ $cartaPorte["fields"]["pesoBrutoVehicularCartaPorte"] = "Peso Bruto Vehicular";
 $cartaPorte["fields"]["anioModeloCartaPorte"] = "Año Modelo";
 $cartaPorte["fields"]["aseguraRespCivilCartaPorte"] = "Asegura Resp Civil";
 $cartaPorte["fields"]["polizaRespCivilCartaPorte"] = "Poliza Resp Civil";
+$cartaPorte["fields"]["AseguraMedAmbiente"] = "Aseguradora Medio Ambiente";
+$cartaPorte["fields"]["PolizaMedAmbiente"] = "Poliza Medio Ambiente";
+
 
 $cartaPorte["fields"]["placaVehiculoCartaPorte"] = "Placa";
 

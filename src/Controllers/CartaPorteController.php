@@ -354,6 +354,8 @@ class CartaPorteController extends BaseController {
         $titulos["MunicipioFigura"] = "";
         $titulos["remolqueCartaPorteNombre"] = "";
         $titulos["PlacaSubTipoRemolque"] = "";
+        $titulos["AseguraMedAmbiente"] = "";
+        $titulos["PolizaMedAmbiente"] = "";
 
         $titulos["uuid"] = generaUUID();
 
@@ -538,10 +540,9 @@ class CartaPorteController extends BaseController {
         if (isset($ubucacionesOrigen["descripcion"])) {
 
             $titulos["nombreUbicacionOrigen"] = $ubucacionesOrigen["descripcion"];
-            
-        }else{
-            
-             $titulos["nombreUbicacionOrigen"] = "Seleccione  Ubicación Origen";
+        } else {
+
+            $titulos["nombreUbicacionOrigen"] = "Seleccione  Ubicación Origen";
         }
 
         if ($cartaPorte["PaisOrigen"] != "" && $cartaPorte["PaisOrigen"] != null && $cartaPorte["PaisOrigen"] != 'null' && $cartaPorte["PaisOrigen"] != "0") {
@@ -571,7 +572,7 @@ class CartaPorteController extends BaseController {
             $titulos["nombreMunicipioOrigen"] = "";
         }
 
-        if ($cartaPorte["LocalidadOrigen"] != "" && $cartaPorte["LocalidadOrigen"] != null  && $cartaPorte["LocalidadOrigen"] != 'null' && $cartaPorte["LocalidadOrigen"] != "0") {
+        if ($cartaPorte["LocalidadOrigen"] != "" && $cartaPorte["LocalidadOrigen"] != null && $cartaPorte["LocalidadOrigen"] != 'null' && $cartaPorte["LocalidadOrigen"] != "0") {
 
             $datosLocalidad = $this->catalogosSAT->localidades40()->obtain($cartaPorte["LocalidadOrigen"], $cartaPorte["EstadoOrigen"]);
             $titulos["nombreLocalidadOrigen"] = $datosLocalidad->texto();
@@ -597,10 +598,9 @@ class CartaPorteController extends BaseController {
         if (isset($ubicacionDestino["descripcion"])) {
 
             $titulos["IDUbicacionDestinoDescripcion"] = $ubicacionDestino["descripcion"];
-            
-        }else{
-            
-             $titulos["IDUbicacionDestinoDescripcion"] = "Seleccione  Ubicación Origen";
+        } else {
+
+            $titulos["IDUbicacionDestinoDescripcion"] = "Seleccione  Ubicación Origen";
         }
 
         $titulos["nombreRazonSocialUbicacionDestino"] = $cartaPorte["nombreRazonSocialUbicacionDestino"];
@@ -659,7 +659,7 @@ class CartaPorteController extends BaseController {
             $titulos["nombreLocalidadDestino"] = "";
         }
 
-        if ($cartaPorte["LocalidadDestino"] != "" && $cartaPorte["LocalidadDestino"] != null  && $cartaPorte["LocalidadDestino"] != "null" && $cartaPorte["LocalidadDestino"] != "0") {
+        if ($cartaPorte["LocalidadDestino"] != "" && $cartaPorte["LocalidadDestino"] != null && $cartaPorte["LocalidadDestino"] != "null" && $cartaPorte["LocalidadDestino"] != "0") {
 
             $datosColonia = $this->catalogosSAT->colonias40()->obtain($cartaPorte["coloniaDestino"], $cartaPorte["CodigoPostalDestino"]);
             $titulos["nombreColoniaDestino"] = $datosColonia->asentamiento();
@@ -736,6 +736,9 @@ class CartaPorteController extends BaseController {
         $titulos["PaisFigura"] = $cartaPorte["PaisFigura"];
         $titulos["EstadoFigura"] = $cartaPorte["EstadoFigura"];
         $titulos["MunicipioFigura"] = $cartaPorte["MunicipioFigura"];
+        
+        $titulos["AseguraMedAmbiente"] = $cartaPorte["AseguraMedAmbiente"];
+        $titulos["PolizaMedAmbiente"] = $cartaPorte["PolizaMedAmbiente"];
 
         $titulos["PlacaSubTipoRemolque"] = $cartaPorte["PlacaSubTipoRemolque"];
 
@@ -761,11 +764,6 @@ class CartaPorteController extends BaseController {
 
             $datosMunicipio = $this->catalogosSAT->municipios40()->obtain($cartaPorte["MunicipioFigura"], $cartaPorte["EstadoFigura"]);
             $titulos["MunicipioFiguraNombre"] = $datosMunicipio->texto();
-            
-            
-     
-            
-            
         } else {
 
             $titulos["MunicipioFiguraNombre"] = "";
@@ -790,10 +788,9 @@ class CartaPorteController extends BaseController {
         if (isset($datosRemolque["descripcion"])) {
 
             $titulos["remolqueCartaPorteNombre"] = $datosRemolque["descripcion"];
-        }else{
-            
+        } else {
+
             $titulos["remolqueCartaPorteNombre"] = "Seleccione Remolque";
-            
         }
 
 
@@ -939,6 +936,7 @@ class CartaPorteController extends BaseController {
                     $mecancias["cantidadTransporta"] = $value["Cantidad"];
                     $mecancias["IDOrigenMercancia"] = $value["IDOrigen"];
                     $mecancias["IDDestinoMercancia"] = $value["IDDestino"];
+                    $mecancias["claveMaterialPeligroso"] = $value["claveProductoSATMaterialPeligroso"];
 
                     if ($this->mercancias->save($mecancias) === false) {
 
@@ -1671,5 +1669,55 @@ class CartaPorteController extends BaseController {
         //============================================================+
         // END OF FILE
         //============================================================+
+    }
+
+    /**
+     * Get Materiales Peligrosos
+     */
+    public function getMaterialesPeligrososSATAjax() {
+
+        $request = service('request');
+        $postData = $request->getPost();
+
+        $response = array();
+
+        // Read new token and assign in $response['token']
+        $response['token'] = csrf_hash();
+
+        if (!isset($postData['searchTerm'])) {
+            // Fetch record
+
+            $listMaterialesPeligrososSAT = $this->catalogosSAT->materialesPeligrosos()->searchByField("texto", "%$%", 100);
+            $listMaterialesPeligrososSAT2 = $this->catalogosSAT->materialesPeligrosos()->searchByField("id", "%$%", 100);
+        } else {
+            $searchTerm = $postData['searchTerm'];
+
+            // Fetch record
+
+            $listMaterialesPeligrososSAT = $this->catalogosSAT->materialesPeligrosos()->searchByField("texto", "%$searchTerm%", 100);
+            $listMaterialesPeligrososSAT2 = $this->catalogosSAT->materialesPeligrosos()->searchByField("id", "%$searchTerm%", 100);
+        }
+
+        $data = array();
+        foreach ($listMaterialesPeligrososSAT as $unidadSAT => $value) {
+
+            $data[] = array(
+                "id" => $value->id(),
+                "text" => $value->id() . ' ' . $value->texto(),
+            );
+        }
+
+
+        foreach ($listMaterialesPeligrososSAT2 as $unidadSAT => $value) {
+
+            $data[] = array(
+                "id" => $value->id(),
+                "text" => $value->id() . ' ' . $value->texto(),
+            );
+        }
+
+        $response['data'] = $data;
+
+        return $this->response->setJSON($response);
     }
 }

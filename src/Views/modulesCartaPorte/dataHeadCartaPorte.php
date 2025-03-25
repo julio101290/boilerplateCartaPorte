@@ -113,8 +113,8 @@
                                     ENCABEZADO
                                     ======================================-->
                                         <div class="col-1"> # </div>
-                                        <div class="col-1"> Codigo </div>
-                                        <div class="col-7"> Descripción </div>
+                                        <div class="col-1">Codigo </div>
+                                        <div class="col-7">Descripción </div>
                                         <div class="col-1">Cantidad </div>
                                         <div class="col-1">Precio </div>
                                         <div class="col-1">Total </div>
@@ -279,7 +279,15 @@
                                                    <input type="hidden" id="materialPeligrosoR" class="form-control materialPeligrosoR" name="materialPeligrosoR" value="$value[MaterialPeligroso]" required="">
                                                    <input type="hidden" id="idDestinoMercanciaR" class="form-control idDestinoMercanciaR" name="idDestinoMercanciaR" value="$value[IDDestino]" required="">
                                                    <input type="hidden" id="idOrigenMercanciaR" class="form-control idOrigenMercanciaR" name="idOrigenMercanciaR" value="$value[IDOrigen]" required="">
+                                                    
+                                                   <input type="hidden" id="claveProductoSATMaterialPeligrosoR" class="form-control claveProductoSATMaterialPeligrosoR" name="claveProductoSATMaterialPeligrosoR" value="$value[claveProductoSATMaterialPeligroso]" required="">
+                                                   <input type="hidden" id="claveProductoSATMaterialPeligrosoDescripcionR" class="form-control claveProductoSATMaterialPeligrosoDescripcionR" name="claveProductoSATMaterialPeligrosoDescripcionR" value="$value[claveProductoSATMaterialPeligrosoDescripcion]" required="">
+                                                       
+                                                        
                                                    <input type="text" id="codeProductMercanciaR" class="form-control codeProductMercanciaR" name="codeProductMercanciaR" value="$value[codeProductMercanciaR]" required=""> 
+                                                    
+                                                   <input type="hidden" id="claveTipoEmbalajeR" class="form-control claveTipoEmbalajeR" name="claveTipoEmbalajeR" value="$value[claveTipoEmbalaje]" required=""> 
+                                                   <input type="hidden" id="descripcionEmbalajeR" class="form-control descripcionEmbalajeR" name="descripcionEmbalajeR" value="$value[descripcionEmbalaje]" required=""> 
                                                 </div>
                                                 <div class="col-7"> 
                                                     <input type="text" id="descriptionMercanciasCartaPorte" class="form-control descriptionMercanciasCartaPorte" idproducto="$value[idproducto]" name="descriptionMercanciasCartaPorte" value="$value[Descripcion]" required=""> 
@@ -1697,6 +1705,9 @@
             var idVehiculo = $("#idVehiculoSell").val();
             var idChofer = $("#idChoferSell").val();
             var tipoVehiculo = $("#tipoVehiculo").val();
+            
+            var AseguraMedAmbiente = $("#AseguraMedAmbiente").val();
+            var PolizaMedAmbiente = $("#PolizaMedAmbiente").val();
 
 
 
@@ -1842,6 +1853,9 @@
             datos.append("razonSocialReceptor", razonSocialReceptor);
             datos.append("codigoPostalReceptor", codigoPostalReceptor);
             datos.append("regimenFiscalReceptor", regimenFiscalReceptor);
+            
+            datos.append("AseguraMedAmbiente", AseguraMedAmbiente);
+            datos.append("PolizaMedAmbiente", PolizaMedAmbiente);
 
 
             //DATOS EXTRAS VEHICULOS
@@ -2168,8 +2182,15 @@
             var IDOrigen = $(".idOrigenMercanciaR");
             var codeProductMercanciaR = $(".codeProductMercanciaR");
             var Cantidad = $(".cantR");
+            var claveSATMaterialPeligroso = $(".claveProductoSATMaterialPeligrosoR");
+            var claveSATMaterialPeligrosoDescripcion = $(".claveProductoSATMaterialPeligrosoDescripcionR");
+            
+            var claveTipoEmbalaje = $(".claveTipoEmbalajeR");
+            var descripcionEmbalaje = $(".descripcionEmbalajeR");
 
             for (var i = 0; i < Descripcion.length; i++) {
+                
+              
 
                 listaMercancias.push({
                     "Descripcion": $(Descripcion[i]).val(),
@@ -2182,7 +2203,11 @@
                     "IDDestino": $(IDDestino[i]).val(),
                     "IDOrigen": $(IDOrigen[i]).val(),
                     "codeProductMercanciaR": $(codeProductMercanciaR[i]).val(),
-                    "Cantidad": $(Cantidad[i]).val()
+                    "Cantidad": $(Cantidad[i]).val(),
+                    "claveProductoSATMaterialPeligroso": $(claveSATMaterialPeligroso[i]).val(),
+                    "claveProductoSATMaterialPeligrosoDescripcion": $(claveSATMaterialPeligrosoDescripcion[i]).val(),
+                    "claveTipoEmbalaje": $(claveTipoEmbalaje[i]).val(),
+                    "descripcionEmbalaje": $(descripcionEmbalaje[i]).val()
 
                 });
 

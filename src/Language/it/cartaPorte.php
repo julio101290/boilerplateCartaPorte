@@ -31,6 +31,8 @@ $cartaPorte["fields"]["pesoBrutoVehicularCartaPorte"] = "Peso Lordo Veicolo";
 $cartaPorte["fields"]["anioModeloCartaPorte"] = "Anno Modello";
 $cartaPorte["fields"]["aseguraRespCivilCartaPorte"] = "Assicurazione Responsabilità Civile";
 $cartaPorte["fields"]["polizaRespCivilCartaPorte"] = "Polizza Responsabilità Civile";
+$cartaPorte["fields"]["AseguraMedAmbiente"] = "Compagnia di assicurazioni ambientali";
+$cartaPorte["fields"]["PolizaMedAmbiente"] = "Politica ambientale";
 
 $cartaPorte["fields"]["placaVehiculoCartaPorte"] = "Targa Veicolo";
 

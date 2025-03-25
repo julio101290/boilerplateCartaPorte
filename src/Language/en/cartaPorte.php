@@ -32,6 +32,9 @@ $cartaPorte["fields"]["anioModeloCartaPorte"] = "Model Year";
 $cartaPorte["fields"]["aseguraRespCivilCartaPorte"] = "Liability Insurance";
 $cartaPorte["fields"]["polizaRespCivilCartaPorte"] = "Liability Policy";
 
+$cartaPorte["fields"]["AseguraMedAmbiente"] = "Environmental Insurance Company";
+$cartaPorte["fields"]["PolizaMedAmbiente"] = "Environment Policy";
+
 $cartaPorte["fields"]["placaVehiculoCartaPorte"] = "License Plate";
 
 $cartaPorte["fields"]["idEmpresaCartaPorte"] = "Company";
