@@ -1050,7 +1050,7 @@ class CartaPorteController extends BaseController {
 
                         echo $listErrors;
 
-                        echo "error al insertar el producto $mecancias[idProduct] $errores";
+                        echo "error al insertar el producto $mecancias[descripcion] $listErrors";
 
                         $this->mercancias->db->transRollback();
                         return;
