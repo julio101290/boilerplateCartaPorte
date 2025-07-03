@@ -1292,7 +1292,7 @@
 
                     console.log(respuesta);
 
-                    $("#tipoVehiculo").val(respuesta["descripcionTipo"]);
+                    $("#tipoVehiculo").val(respuesta["id"]);
 
 
 

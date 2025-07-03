@@ -111,9 +111,34 @@ class CartaPorteController extends BaseController {
         if ($this->request->isAJAX()) {
 
 
-            $datos = $this->cartaPorte->mdlGetCartaPorte($empresasID);
+            $request = service('request');
 
-            return \Hermawan\DataTables\DataTable::of($datos)->toJson(true);
+            $draw = $request->getGet('draw');
+            $start = $request->getGet('start');
+            $length = $request->getGet('length');
+            $search = $request->getGet('search')['value'] ?? '';
+            $order = $request->getGet('order');
+            $columns = $request->getGet('columns');
+
+            $orderColumnIndex = $order[0]['column'] ?? 0;
+            $orderColumn = $columns[$orderColumnIndex]['data'] ?? 'a.id';
+            $orderDir = $order[0]['dir'] ?? 'asc';
+
+            $resultado = $this->cartaPorte->mdlGetCartaPorteServerSide(
+                    $empresasID,
+                    $search,
+                    $orderColumn,
+                    $orderDir,
+                    $start,
+                    $length
+            );
+
+            return $this->response->setJSON([
+                        'draw' => intval($draw),
+                        'recordsTotal' => $resultado['total'],
+                        'recordsFiltered' => $resultado['filtered'],
+                        'data' => $resultado['data']
+            ]);
         }
 
 
@@ -154,9 +179,48 @@ class CartaPorteController extends BaseController {
         if ($this->request->isAJAX()) {
 
 
-            $datos = $this->cartaPorte->mdlGetCartaPorteFilters($empresasID, $desdeFecha, $hastaFecha, $todas, $empresa, $sucursal, $cliente);
+            $request = service('request');
 
-            return \Hermawan\DataTables\DataTable::of($datos)->toJson(true);
+            $draw = $request->getGet('draw');
+            $start = $request->getGet('start');
+            $length = $request->getGet('length');
+            $search = $request->getGet('search')['value'] ?? '';
+
+            $order = $request->getGet('order');
+            $columns = $request->getGet('columns');
+            $orderColumnIndex = $order[0]['column'] ?? 0;
+            $orderColumn = $columns[$orderColumnIndex]['data'] ?? 'a.id';
+            $orderDir = $order[0]['dir'] ?? 'asc';
+
+            // Filtros recibidos desde el frontend
+            $from = $request->getGet('from');
+            $to = $request->getGet('to');
+            $allSells = $request->getGet('allSells');
+            $empresa = $request->getGet('empresa') ?? 0;
+            $sucursal = $request->getGet('sucursal') ?? 0;
+            $cliente = $request->getGet('cliente') ?? 0;
+
+            $resultado = $this->cartaPorte->mdlGetCartaPorteFiltersServerSide(
+                    $empresasID,
+                    $from,
+                    $to,
+                    $allSells,
+                    $empresa,
+                    $sucursal,
+                    $cliente,
+                    $search,
+                    $orderColumn,
+                    $orderDir,
+                    $start,
+                    $length
+            );
+
+            return $this->response->setJSON([
+                        'draw' => intval($draw),
+                        'recordsTotal' => $resultado['total'],
+                        'recordsFiltered' => $resultado['filtered'],
+                        'data' => $resultado['data']
+            ]);
         }
     }
 
@@ -172,9 +236,9 @@ class CartaPorteController extends BaseController {
     public function sellsReport($idEmpresa = 0
             , $idSucursal = 0
             , $idProducto = 0
-            , $from
-            , $to
-            , $cliente) {
+            , $from = null
+            , $to = null
+            , $cliente = null) {
 
 
         $auth = service('authentication');
@@ -536,6 +600,14 @@ class CartaPorteController extends BaseController {
         $ubucacionesOrigen = $this->ubicaciones->select("*")->where("id", $cartaPorte["IDUbicacionOrigen"])->asArray()->first();
         //Ubicaciones Destino
         $titulos["IDUbicacionDestino"] = $cartaPorte["IDUbicacionDestino"];
+        
+        if ($cartaPorte["PaisOrigen"] == "" || $cartaPorte["PaisOrigen"] == null || $cartaPorte["PaisOrigen"] == 'null' || $cartaPorte["PaisOrigen"] == "0") {
+       
+            
+            $cartaPorte["PaisOrigen"] == "MEX";
+            
+        }
+        
 
         if (isset($ubucacionesOrigen["descripcion"])) {
 
@@ -555,7 +627,9 @@ class CartaPorteController extends BaseController {
         }
 
         if ($cartaPorte["EstadoOrigen"] != "" && $cartaPorte["EstadoOrigen"] != null && $cartaPorte["EstadoOrigen"] != 'null' && $cartaPorte["EstadoOrigen"] != "0") {
-
+            
+            
+            
             $datosEstado = $this->catalogosSAT->estados40()->obtain($cartaPorte["EstadoOrigen"], $cartaPorte["PaisOrigen"]);
             $titulos["nombreEstadoOrigen"] = $datosEstado->texto();
         } else {
@@ -736,11 +810,17 @@ class CartaPorteController extends BaseController {
         $titulos["PaisFigura"] = $cartaPorte["PaisFigura"];
         $titulos["EstadoFigura"] = $cartaPorte["EstadoFigura"];
         $titulos["MunicipioFigura"] = $cartaPorte["MunicipioFigura"];
-        
+
         $titulos["AseguraMedAmbiente"] = $cartaPorte["AseguraMedAmbiente"];
         $titulos["PolizaMedAmbiente"] = $cartaPorte["PolizaMedAmbiente"];
 
         $titulos["PlacaSubTipoRemolque"] = $cartaPorte["PlacaSubTipoRemolque"];
+        
+        if ($cartaPorte["PaisFigura"] == "" || $cartaPorte["PaisFigura"] == null || $cartaPorte["PaisFigura"] == 'null' || $cartaPorte["PaisFigura"] == "0") {
+            
+            $cartaPorte["PaisFigura"] = "MEX"; 
+            
+        }
 
         if ($cartaPorte["PaisFigura"] != "" && $cartaPorte["PaisFigura"] != null && $cartaPorte["PaisFigura"] != 'null' && $cartaPorte["PaisFigura"] != "0") {
 
@@ -836,6 +916,24 @@ class CartaPorteController extends BaseController {
         $datosSucursal = $this->sucursales->find($datos["idSucursal"]);
 
         $datos["idArqueoCaja"] = 0;
+        $datos["idCustumer"] = 0;
+        $datos["tipoComprobanteRD"] = 0;
+        $datos["folioComprobanteRD"] = 0;
+        $datos["delivaryTime"] = "";
+        $dbDriver = model('CartaPorteModel')->db->DBDriver;
+
+        if ($dbDriver === 'Postgre') {
+            $fechas = ['FechaHoraSalidaLlegadaOrigen', 'FechaHoraSalidaLlegadaDestino'];
+
+            foreach ($fechas as $campo) {
+                if (!empty($datos[$campo])) {
+                    // Convierte "2025-07-25T16:32" en "2025-07-25 16:32:00"
+                    $datos[$campo] = date('Y-m-d H:i:s', strtotime($datos[$campo]));
+                } else {
+                    $datos[$campo] = null; // Evita el error por string vacío en PostgreSQL
+                }
+            }
+        }
 
         /**
          * if is new Carta Porte
@@ -855,6 +953,7 @@ class CartaPorteController extends BaseController {
 
 
                 if ($this->cartaPorte->save($datos) === false) {
+
 
                     $errores = $this->cartaPorte->errors();
 

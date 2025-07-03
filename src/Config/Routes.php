@@ -9,22 +9,6 @@ $routes->group('admin', function ($routes) {
     $routes->get('facturarCartaPorte/(:any)', 'FacturaElectronicaController::timbrarCartaPorte/$1');
     $routes->get('xmlenlace/getXMLEnlazadosCartaPorte/(:any)', 'XmlController::getXMLEnlazadosCartaPorte/$1');
 
-    /**
-     * Ruta para las ubicaciones
-     */
-    $routes->resource('ubicaciones', [
-        'filter' => 'permission:ubicaciones-permission',
-        'controller' => 'ubicacionesController',
-        'except' => 'show'
-    ]);
-
-    $routes->post('ubicaciones/save', 'UbicacionesController::save');
-    $routes->post('ubicaciones/getUbicaciones', 'UbicacionesController::getUbicaciones');
-    $routes->post('ubicaciones/getColoniaSATAjax', 'UbicacionesController::getColoniasSAT');
-    $routes->post('ubicaciones/getLocalidadSATAjax', 'UbicacionesController::getLocalidadSAT');
-    $routes->post('ubicaciones/getPaisesSATAjax', 'UbicacionesController::getPaisesSAT');
-    $routes->post('ubicaciones/getEstadosSATAjax', 'UbicacionesController::getEstadosSAT');
-    $routes->post('ubicaciones/getMunicipiosSATAjax', 'UbicacionesController::getMunicipiosSAT');
 
     $routes->resource('remolques', [
         'filter' => 'permission:remolques-permission',
@@ -35,10 +19,9 @@ $routes->group('admin', function ($routes) {
     $routes->post('remolques/getRemolques', 'RemolquesController::getRemolques');
     $routes->post('remolques/getRemolquesAjax', 'RemolquesController::getRemolquesAjax');
 
-    $routes->post('ubicaciones/getUbicacionesAjax', 'UbicacionesController::getUbicacionesAjax');
-
+    
     $routes->resource('cartasPorte', [
-        'filter' => 'permission:cartasPorte-permission',
+        'filter' => 'permission:cartasporte-permission',
         'controller' => 'CartaPorteController',
         'except' => 'show',
         'namespace' => 'julio101290\boilerplatecartaporte\Controllers'
