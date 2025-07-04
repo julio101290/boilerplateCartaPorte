@@ -1665,7 +1665,7 @@
             var RemolqueCartaPorte = $("#subTipoRemolqueCartaPorte").val();
 
             var codigoPostalChoferCartaPorte = $("#codigoPostalChoferCartaPorte").val();
-            var paisChoferCartaPorte = $("#paisChoferCartaPorte").val();
+            var paisChoferCartaPorte =$("#paisChoferCartaPorte").val();
             var estadoChoferCartaPorte = $("#estadoChoferCartaPorte").val();
             var municipioChoferCartaPorte = $("#municipioChoferCartaPorte").val();
 
