@@ -604,7 +604,7 @@ class CartaPorteController extends BaseController {
         if ($cartaPorte["PaisOrigen"] == "" || $cartaPorte["PaisOrigen"] == null || $cartaPorte["PaisOrigen"] == 'null' || $cartaPorte["PaisOrigen"] == "0") {
        
             
-            $cartaPorte["PaisOrigen"] == "MEX";
+            $cartaPorte["PaisOrigen"] = "MEX";
             
         }
         
@@ -630,7 +630,7 @@ class CartaPorteController extends BaseController {
             
             
             
-            $datosEstado = $this->catalogosSAT->estados40()->obtain($cartaPorte["EstadoOrigen"], $cartaPorte["PaisOrigen"]);
+            $datosEstado = $this->catalogosSAT->estados40()->obtain($cartaPorte["EstadoOrigen"],  $cartaPorte["PaisOrigen"] );
             $titulos["nombreEstadoOrigen"] = $datosEstado->texto();
         } else {
 

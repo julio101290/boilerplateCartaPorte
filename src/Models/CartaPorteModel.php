@@ -300,13 +300,7 @@ class CartaPorteModel extends Model {
                     ->where('a.date <=', $to . ' 23:59:59');
         }
 
-        // Filtro de saldo
-        $builder->groupStart();
-        if ($allSells !== 'true') {
-            $builder->where('a.balance >', 0);
-        }
-        $builder->groupEnd();
-
+    
         // Filtro por empresa
         if ($empresa != 0) {
             $builder->where('a.idEmpresa', $empresa);
