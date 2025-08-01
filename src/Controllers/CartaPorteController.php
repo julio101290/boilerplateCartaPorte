@@ -27,6 +27,8 @@ use julio101290\boilerplatecartaporte\Models\CartaPorteDetailsModel;
 use julio101290\boilerplatecartaporte\Models\MercanciascartaporteModel;
 use julio101290\boilerplatelocations\Models\UbicacionesModel;
 use julio101290\boilerplateremolques\Models\RemolquesModel;
+use julio101290\boilerplateCFDI\Models\XmlModel;
+use julio101290\boilerplateCFDI\Controllers\XmlController;
 
 class CartaPorteController extends BaseController {
 
@@ -55,6 +57,8 @@ class CartaPorteController extends BaseController {
     protected $mercancias;
     protected $ubicaciones;
     protected $remolque;
+    protected $xmlModel;
+    protected $xmlController;
 
     public function __construct() {
         $this->log = new LogModel();
@@ -80,7 +84,9 @@ class CartaPorteController extends BaseController {
         $this->mercancias = new MercanciascartaporteModel();
         $this->ubicaciones = new UbicacionesModel();
         $this->remolque = new RemolquesModel();
-
+        $this->xmlModel = new XMLModel();
+        $this->xmlController = new XMLController();
+        
         helper('menu');
         helper('utilerias');
     }
@@ -1818,5 +1824,23 @@ class CartaPorteController extends BaseController {
         $response['data'] = $data;
 
         return $this->response->setJSON($response);
+    }
+    
+        public function generaCartaPortePDFDesdeVenta($uuidCartaPorte) {
+
+        // buscamos el id de la venta
+
+        $datosCartaPorte = $this->cartaPorte->select("*")->where("UUID", $uuidCartaPorte)->first();
+
+        //Buscamo el uuid del xml en xml enlazados
+
+        $enlaceXML = $this->xmlEnlace->select("*")
+                        ->where("idDocumento", $datosCartaPorte["id"])
+                        ->where("tipo", "tra")->first();
+
+        $archivo = $this->xmlController->generarPDF($enlaceXML["uuidXML"], true);
+
+        echo $archivo;
+        $this->response->setHeader("Content-Type", "application/pdf");
     }
 }

@@ -3,7 +3,10 @@
 $routes->group('admin', function ($routes) {
 
 
-    $routes->get('xml/generarCartaPortePDFDesdeVenta/(:any)', 'XmlController::generaCartaPortePDFDesdeVenta/$1');
+    $routes->get('xml/generarCartaPortePDFDesdeVenta/(:any)'
+            , 'CartaPorteController::generaCartaPortePDFDesdeVenta/$1'
+            , ['namespace' => 'julio101290\boilerplatecartaporte\Controllers']
+            );
 
     $routes->get('facturarCartaPorte/(:any)'
             , 'FacturaElectronicaController::timbrarCartaPorte/$1'
