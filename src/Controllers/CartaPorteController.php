@@ -86,7 +86,7 @@ class CartaPorteController extends BaseController {
         $this->remolque = new RemolquesModel();
         $this->xmlModel = new XMLModel();
         $this->xmlController = new XMLController();
-        
+
         helper('menu');
         helper('utilerias');
     }
@@ -606,14 +606,13 @@ class CartaPorteController extends BaseController {
         $ubucacionesOrigen = $this->ubicaciones->select("*")->where("id", $cartaPorte["IDUbicacionOrigen"])->asArray()->first();
         //Ubicaciones Destino
         $titulos["IDUbicacionDestino"] = $cartaPorte["IDUbicacionDestino"];
-        
+
         if ($cartaPorte["PaisOrigen"] == "" || $cartaPorte["PaisOrigen"] == null || $cartaPorte["PaisOrigen"] == 'null' || $cartaPorte["PaisOrigen"] == "0") {
-       
-            
+
+
             $cartaPorte["PaisOrigen"] = "MEX";
-            
         }
-        
+
 
         if (isset($ubucacionesOrigen["descripcion"])) {
 
@@ -633,10 +632,10 @@ class CartaPorteController extends BaseController {
         }
 
         if ($cartaPorte["EstadoOrigen"] != "" && $cartaPorte["EstadoOrigen"] != null && $cartaPorte["EstadoOrigen"] != 'null' && $cartaPorte["EstadoOrigen"] != "0") {
-            
-            
-            
-            $datosEstado = $this->catalogosSAT->estados40()->obtain($cartaPorte["EstadoOrigen"],  $cartaPorte["PaisOrigen"] );
+
+
+
+            $datosEstado = $this->catalogosSAT->estados40()->obtain($cartaPorte["EstadoOrigen"], $cartaPorte["PaisOrigen"]);
             $titulos["nombreEstadoOrigen"] = $datosEstado->texto();
         } else {
 
@@ -821,11 +820,10 @@ class CartaPorteController extends BaseController {
         $titulos["PolizaMedAmbiente"] = $cartaPorte["PolizaMedAmbiente"];
 
         $titulos["PlacaSubTipoRemolque"] = $cartaPorte["PlacaSubTipoRemolque"];
-        
+
         if ($cartaPorte["PaisFigura"] == "" || $cartaPorte["PaisFigura"] == null || $cartaPorte["PaisFigura"] == 'null' || $cartaPorte["PaisFigura"] == "0") {
-            
-            $cartaPorte["PaisFigura"] = "MEX"; 
-            
+
+            $cartaPorte["PaisFigura"] = "MEX";
         }
 
         if ($cartaPorte["PaisFigura"] != "" && $cartaPorte["PaisFigura"] != null && $cartaPorte["PaisFigura"] != 'null' && $cartaPorte["PaisFigura"] != "0") {
@@ -938,6 +936,17 @@ class CartaPorteController extends BaseController {
                 } else {
                     $datos[$campo] = null; // Evita el error por string vacío en PostgreSQL
                 }
+            }
+        }
+
+        $fechas = ['FechaHoraSalidaLlegadaOrigen', 'FechaHoraSalidaLlegadaDestino'];
+
+        foreach ($fechas as $campo) {
+            if (!empty($datos[$campo])) {
+                // Convierte "2025-07-25T16:32" en "2025-07-25 16:32:00"
+                $datos[$campo] = date('Y-m-d H:i:s', strtotime($datos[$campo]));
+            } else {
+                $datos[$campo] = null; // Evita el error por string vacío en PostgreSQL
             }
         }
 
@@ -1825,8 +1834,8 @@ class CartaPorteController extends BaseController {
 
         return $this->response->setJSON($response);
     }
-    
-        public function generaCartaPortePDFDesdeVenta($uuidCartaPorte) {
+
+    public function generaCartaPortePDFDesdeVenta($uuidCartaPorte) {
 
         // buscamos el id de la venta
 
